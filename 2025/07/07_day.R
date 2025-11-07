@@ -38,19 +38,24 @@ thess_water <- opq(thess_bbox) %>%
 # Define metro stations 
 metro_stations <- data.frame(
     name = c(
-        "New Railway Station", "Dimokratias", "Venizelou", "Agia Sofia",
-        "Syntrivani", "Panepistimio", "Papafi", "Efklidi", "Fleming",
+        "New Railway Station", "Dimokratias", "Venizelou", 
+        "Agia Sofia", "Syntrivani", "Panepistimio", 
+        "Papafi", "Efklidi", "Fleming",
         "Analipsi", "25th Martiou", "Voulgari", "Nea Elvetia"
     ),
     lon = c(
-        22.9173, 22.9265, 22.9365, 22.9413,
-        22.9469, 22.9508, 22.9554, 22.9608, 22.9646,
-        22.9676, 22.9702, 22.9726, 22.9753
+        22.92898117154671, 22.935477058942265, 22.942617522228826, 
+        22.947456227287372, 22.95392229930323, 22.960509261148136, 
+        22.963204827853094, 22.960744825821006, 22.95695488076687,
+        22.958521336006672, 22.958381861132526, 22.960204446926262, 
+        22.969962196984152
     ),
     lat = c(
-        40.6423, 40.6398, 40.6340, 40.6303,
-        40.6268, 40.6242, 40.6213, 40.6188, 40.6159,
-        40.6125, 40.6089, 40.6032, 40.5968
+        40.64411438780753, 40.64095164511105, 40.63722698411093, 
+        40.634654201821455, 40.630686038344244, 40.62600379214026, 
+        40.619886212314064, 40.615651478573454, 40.61189490484137,
+        40.60611910856832, 40.600759252360135, 40.5955332897329, 
+        40.59311882251412
     )
 )
 
@@ -70,20 +75,20 @@ ggplot() +
     
     geom_sf(data = thess_roads$osm_lines, color = "grey85", size = 0.3) +
     
-    geom_sf(data = metro_line, color = "#f09a8c", size = 1.2) +
+    geom_sf(data = metro_line, color = "#f09a8c", size = 1) +
     
-    geom_sf(data = metro_sf, color = "#f09a8c", size = 3) +
+    geom_sf(data = metro_sf, color = "#f09a8c", size = 2.5) +
     
     geom_text(data = metro_stations, aes(x = lon, y = lat, label = name), 
               size = 3, color = "#222222", vjust = -1) +
     
-    coord_sf(xlim = c(22.9, 22.98), ylim = c(40.59, 40.65)) +
+    coord_sf(xlim = c(22.92, 22.98), ylim = c(40.59, 40.65)) +
     
     theme_void(base_family = "Candara") +
     
     labs(
-        title = "Thessaloniki Metro Accessibility",
-        subtitle = "Only one metro line under construction — limited coverage across the city.",
+        title = "The entire Thessaloniki metro: 13 stations, 17 minutes.",
+        subtitle = "A long-awaited system that covers only a small part of the city.",
         caption = "30DayMapChallenge 2025: Day 07 | Graphic: Natasa Anastasiadou",
     ) +
     
