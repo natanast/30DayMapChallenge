@@ -73,34 +73,31 @@ metro_line <- st_sfc(st_linestring(coords), crs = 4326)
 
 gr = ggplot() +
     
-    geom_sf(data = thess_roads$osm_lines, color = "grey78", size = 0.3) +
+    geom_sf(data = thess_roads$osm_lines, color = "grey75", size = 0.3) +
     
-    geom_sf(data = metro_line, color = "#f09a8c", size = 1) +
+    geom_sf(data = metro_line, color = "#df7775", size = 1.8) +
     
-    geom_sf(data = metro_sf, color = "#a50026", size = 2.5) +
+    geom_sf(data = metro_sf, color = "#ab403f", size = 3.25) +
     
     geom_text(data = metro_stations, aes(x = lon, y = lat, label = name), 
-              size = 3, color = "grey10", vjust = -1) +
+              size = 3.75, color = "grey10", vjust = -.5, hjust = -0.1) +
     
-    geom_text(aes(x = 22.945, y = 40.625, label = "17 min end-to-end"),
-              color = "#d73027", size = 3, fontface = "bold") +
 
-    
     coord_sf(xlim = c(22.9, 23), ylim = c(40.59, 40.665)) +
     
     theme_void(base_family = "Candara") +
     
     labs(
-        title = "The entire Thessaloniki metro: 13 stations, 17 minutes.",
+        title = "Thessaloniki metro: 13 stations, 17 minutes.",
         subtitle = "A long-awaited system that covers only a small part of the city.",
-        caption = "30DayMapChallenge 2025: Day 07 | Graphic: Natasa Anastasiadou",
+        caption = "30DayChartChallenge 2025: <b> Day 07 </b> | Graphic: <b>Natasa Anastasiadou</b>"
     ) +
     
     theme(
         
-        plot.title = element_text(size = 16, face = "bold", hjust = 0.5, margin = margin(t = 15, b = 5)),
-        plot.subtitle = element_text(size = 13, hjust = 0.35, color = "grey30", margin = margin(t = 5, b = 15)),
-        plot.caption = element_text(margin = margin(t = 35), size = 8, hjust = 1.2),
+        plot.title = element_markdown(size = 17, face = "bold", hjust = 0.5, margin = margin(t = 15, b = 5)),
+        plot.subtitle = element_markdown(size = 15, hjust = 0.5, color = "grey30", margin = margin(t = 5, b = 15)),
+        plot.caption = element_markdown(margin = margin(t = 35), size = 10, hjust = 1.1),
         
         plot.background = element_rect(fill = "grey96", color = NA),
         plot.margin = margin(20, 20, 20, 20)
