@@ -71,18 +71,22 @@ metro_line <- st_sfc(st_linestring(coords), crs = 4326)
 
 # plot -----
 
-ggplot() +
+gr = ggplot() +
     
-    geom_sf(data = thess_roads$osm_lines, color = "grey85", size = 0.3) +
+    geom_sf(data = thess_roads$osm_lines, color = "grey78", size = 0.3) +
     
     geom_sf(data = metro_line, color = "#f09a8c", size = 1) +
     
-    geom_sf(data = metro_sf, color = "#f09a8c", size = 2.5) +
+    geom_sf(data = metro_sf, color = "#a50026", size = 2.5) +
     
     geom_text(data = metro_stations, aes(x = lon, y = lat, label = name), 
-              size = 3, color = "#222222", vjust = -1) +
+              size = 3, color = "grey10", vjust = -1) +
     
-    coord_sf(xlim = c(22.92, 22.98), ylim = c(40.59, 40.65)) +
+    geom_text(aes(x = 22.945, y = 40.625, label = "17 min end-to-end"),
+              color = "#d73027", size = 3, fontface = "bold") +
+
+    
+    coord_sf(xlim = c(22.9, 23), ylim = c(40.59, 40.665)) +
     
     theme_void(base_family = "Candara") +
     
@@ -98,6 +102,7 @@ ggplot() +
         plot.subtitle = element_text(size = 13, hjust = 0.35, color = "grey30", margin = margin(t = 5, b = 15)),
         plot.caption = element_text(margin = margin(t = 35), size = 8, hjust = 1.2),
         
+        plot.background = element_rect(fill = "grey96", color = NA),
         plot.margin = margin(20, 20, 20, 20)
     )
 
